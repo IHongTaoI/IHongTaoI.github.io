@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ECMAscript6," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1.为函数参数指定默认值123456789101112131415function fn(a,b)&amp;#123;	//如果这样设置默认值	a = a || 10;	b = b || 20;	console.log(a,b);&amp;#125;fn(0,10);// 10 10//es6 中function fn1(a = 10,b=20)&amp;#123;	console.log(a,b);&amp;#125;fn1(">
+<meta name="keywords" content="ECMAscript6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ECMAscript6快速入门-函数的扩展">
+<meta property="og:url" content="http://yoursite.com/2017/09/30/ECMAscript6/ECMAscript6快速入门-函数的扩展/index.html">
+<meta property="og:site_name" content="洪涛的博客">
+<meta property="og:description" content="1.为函数参数指定默认值123456789101112131415function fn(a,b)&amp;#123;	//如果这样设置默认值	a = a || 10;	b = b || 20;	console.log(a,b);&amp;#125;fn(0,10);// 10 10//es6 中function fn1(a = 10,b=20)&amp;#123;	console.log(a,b);&amp;#125;fn1(">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-30T06:48:15.913Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ECMAscript6快速入门-函数的扩展">
+<meta name="twitter:description" content="1.为函数参数指定默认值123456789101112131415function fn(a,b)&amp;#123;	//如果这样设置默认值	a = a || 10;	b = b || 20;	console.log(a,b);&amp;#125;fn(0,10);// 10 10//es6 中function fn1(a = 10,b=20)&amp;#123;	console.log(a,b);&amp;#125;fn1(">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/30/ECMAscript6/ECMAscript6快速入门-函数的扩展/"/>
+
+
+
+
+
+  <title>ECMAscript6快速入门-函数的扩展 | 洪涛的博客</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?91404f76b7d26c18af34f88ac92486fb";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">洪涛的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/30/ECMAscript6/ECMAscript6快速入门-函数的扩展/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="洪涛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="洪涛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ECMAscript6快速入门-函数的扩展</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-30T14:40:48+08:00">
+                2017-09-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-为函数参数指定默认值"><a href="#1-为函数参数指定默认值" class="headerlink" title="1.为函数参数指定默认值"></a>1.为函数参数指定默认值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">	<span class="comment">//如果这样设置默认值</span></div><div class="line">	a = a || <span class="number">10</span>;</div><div class="line">	b = b || <span class="number">20</span>;</div><div class="line">	<span class="built_in">console</span>.log(a,b);</div><div class="line">&#125;</div><div class="line">fn(<span class="number">0</span>,<span class="number">10</span>);<span class="comment">// 10 10</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//es6 中</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params">a = <span class="number">10</span>,b=<span class="number">20</span></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(a,b);</div><div class="line">&#125;</div><div class="line">fn1();<span class="comment">//10 20</span></div><div class="line">fn1(<span class="number">0</span>,<span class="number">10</span>);<span class="comment">//0 10</span></div></pre></td></tr></table></figure>
+<h3 id="2-Rest参数"><a href="#2-Rest参数" class="headerlink" title="2.Rest参数"></a>2.Rest参数</h3><blockquote>
+<p>Rest参数接收函数的多余参数，组成一个数组，放在形参的最后<br>就不需要arguments对象了<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> arg = <span class="built_in">arguments</span>;</div><div class="line">	<span class="keyword">var</span> res = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;arg.length;i++)&#123;</div><div class="line">		res+=arg[i];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//写成rest参数形式</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum1</span>(<span class="params">...arr</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> res = <span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;arr.lenth;i++)&#123;</div><div class="line">		res+=arr[i];</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum1</span>(<span class="params">a,...arr</span>)</span>&#123;<span class="comment">//rest前面可以写参数，但是后面就不行了</span></div><div class="line">	<span class="comment">//body...</span></div><div class="line">｝</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum1</span>(<span class="params">a,...arr,b</span>)</span>&#123;<span class="comment">//报错</span></div><div class="line">	<span class="comment">//body...</span></div><div class="line">｝</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="3-箭头函数"><a href="#3-箭头函数" class="headerlink" title="3.箭头函数"></a>3.箭头函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> a = <span class="function"><span class="params">a</span> =&gt;</span> a;</div><div class="line"><span class="comment">//相当于</span></div><div class="line"><span class="keyword">const</span> a = <span class="function"><span class="keyword">function</span> (<span class="params">a</span>)</span>&#123;</div><div class="line">	renturn a;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//如果要两个参数</span></div><div class="line"><span class="keyword">const</span> a = <span class="function">(<span class="params">a,b</span>) =&gt;</span> a + b;</div><div class="line"><span class="keyword">const</span> a = <span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>)</span>&#123;</div><div class="line">	renturn a+b;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//如果不是直接返回,则在代码逻辑外要加花括号</span></div><div class="line"><span class="keyword">const</span> a = <span class="function">(<span class="params">a,b</span>) =&gt;</span> &#123;</div><div class="line">	a*=<span class="number">2</span>;</div><div class="line">	b*=<span class="number">2</span>;</div><div class="line">	<span class="keyword">return</span> a+b;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//如果箭头函数的返回值是一个对象的时候</span></div><div class="line"><span class="keyword">const</span> a = <span class="function">(<span class="params">a,b</span>) =&gt;</span> (&#123;a,b&#125;)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">3</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">9</span>];</div><div class="line">arr.sort(<span class="function">(<span class="params">a,b</span>) =&gt;</span> a-b)</div></pre></td></tr></table></figure>
+<ul>
+<li><p>箭头函数体内没有自己的this对象，所以在使用的时候，内部的this就是定义时所在环境的对象。而不是使用时所在的环境。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">	&#125;,<span class="number">1000</span>);</div><div class="line">	setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">	&#125;,<span class="number">1000</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;;</div><div class="line"></div><div class="line">fn.call(obj);</div><div class="line"><span class="comment">// 打印 window</span></div><div class="line"><span class="comment">// 打印 obj</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>不能给箭头函数使用call apply bind 去改变内部的this指向</p>
+</li>
+<li>体内也没有arguments对象，可以用rest参数的形式去代替</li>
+<li>不能当作构造函数去使用</li>
+<li>不能当作Generator函数</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="洪涛 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="洪涛 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ECMAscript6/" rel="tag"># ECMAscript6</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/30/Sass入门/Sass基础-入门/" rel="next" title="Sass基础--入门">
+                <i class="fa fa-chevron-left"></i> Sass基础--入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/30/ECMAscript6/ECMAscript6快速入门-set和map/" rel="prev" title="11">
+                11 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          
+            <img class="site-author-image" itemprop="image"
+              src="/images/avatar.png"
+              alt="洪涛" />
+          
+            <p class="site-author-name" itemprop="name">洪涛</p>
+            <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yourname" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://plus.google.com/yourname" target="_blank" title="Google">
+                  
+                    <i class="fa fa-fw fa-google"></i>Google</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.facebook.com/yourname" target="_blank" title="FB Page">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://youtube.com/yourname" target="_blank" title="YouTube">
+                  
+                    <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/your-user-name" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>微博</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/your-user-name" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>知乎</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.hongtao.site/" title="另一个博客" target="_blank">另一个博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://airfald.github.io/" title="欧贺福的博客" target="_blank">欧贺福的博客</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-为函数参数指定默认值"><span class="nav-number">1.</span> <span class="nav-text">1.为函数参数指定默认值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Rest参数"><span class="nav-number">2.</span> <span class="nav-text">2.Rest参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-箭头函数"><span class="nav-number">3.</span> <span class="nav-text">3.箭头函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">洪涛</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
