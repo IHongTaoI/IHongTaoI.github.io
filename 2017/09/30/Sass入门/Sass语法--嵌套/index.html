@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Sass," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="选择器嵌套123456body &amp;#123;	margin:0;	header&amp;#123;		margin:5px;	&amp;#125;&amp;#125; 编译之后&amp;gt;&amp;gt;&amp;gt;&amp;gt;123456body &amp;#123;  background-color: lightgray; &amp;#125;body header &amp;#123;    background-color: lightgreen;  &amp;">
+<meta name="keywords" content="Sass">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sass语法--嵌套">
+<meta property="og:url" content="http://yoursite.com/2017/09/30/Sass入门/Sass语法--嵌套/index.html">
+<meta property="og:site_name" content="洪涛的博客">
+<meta property="og:description" content="选择器嵌套123456body &amp;#123;	margin:0;	header&amp;#123;		margin:5px;	&amp;#125;&amp;#125; 编译之后&amp;gt;&amp;gt;&amp;gt;&amp;gt;123456body &amp;#123;  background-color: lightgray; &amp;#125;body header &amp;#123;    background-color: lightgreen;  &amp;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-30T06:35:44.488Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sass语法--嵌套">
+<meta name="twitter:description" content="选择器嵌套123456body &amp;#123;	margin:0;	header&amp;#123;		margin:5px;	&amp;#125;&amp;#125; 编译之后&amp;gt;&amp;gt;&amp;gt;&amp;gt;123456body &amp;#123;  background-color: lightgray; &amp;#125;body header &amp;#123;    background-color: lightgreen;  &amp;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/30/Sass入门/Sass语法--嵌套/"/>
+
+
+
+
+
+  <title>Sass语法--嵌套 | 洪涛的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">洪涛的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/30/Sass入门/Sass语法--嵌套/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="洪涛">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="洪涛的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Sass语法--嵌套</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-30T12:41:43+08:00">
+                2017-09-30
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-09-30T14:35:44+08:00">
+                2017-09-30
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>选择器嵌套</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">	<span class="attribute">margin</span>:<span class="number">0</span>;</div><div class="line">	header&#123;</div><div class="line">		<span class="selector-tag">margin</span><span class="selector-pseudo">:5px</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>编译之后&gt;&gt;&gt;&gt;<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: lightgray;</div><div class="line"> &#125;</div><div class="line"><span class="selector-tag">body</span> <span class="selector-tag">header</span> &#123;</div><div class="line">    <span class="attribute">background-color</span>: lightgreen; </div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p><strong>属性嵌套</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">footer</span>&#123;</div><div class="line">    <span class="attribute">background</span>:&#123;</div><div class="line">      color:red;</div><div class="line">      <span class="attribute">size </span>: <span class="number">100%</span> <span class="number">50%</span>;</div><div class="line">      <span class="attribute">position</span>: center;</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>编译之后&gt;&gt;&gt;&gt;<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> <span class="selector-tag">footer</span> &#123;</div><div class="line">    <span class="attribute">background-color</span>: red;</div><div class="line">    <span class="attribute">background-size</span>: <span class="number">100%</span> <span class="number">50%</span>;</div><div class="line">    <span class="attribute">background-position</span>: center; &#125;</div></pre></td></tr></table></figure></p>
+<p><strong>hover和内部class</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span>&#123;</div><div class="line">	<span class="attribute">a</span>:hover &#123;</div><div class="line">    color: red;</div><div class="line">  &#125;</div><div class="line">  <span class="selector-tag">span</span> &#123;</div><div class="line">    &amp;:hover &#123;</div><div class="line">      <span class="selector-tag">color</span>: <span class="selector-tag">blue</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="selector-tag">color</span>: <span class="selector-tag">red</span>;</div><div class="line">    //内部class</div><div class="line">    //注意&amp;.content 和  .content的区别</div><div class="line">    &amp;<span class="selector-class">.content</span> &#123; <span class="attribute">color</span>:green; &#125;</div><div class="line">    <span class="selector-class">.content2</span> &#123;<span class="attribute">color</span>:red;&#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>编译之后&gt;&gt;&gt;<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> <span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">    <span class="attribute">color</span>: red;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">body</span> <span class="selector-tag">span</span> &#123;</div><div class="line">    <span class="attribute">color</span>: red；</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">body</span> <span class="selector-tag">span</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">    <span class="attribute">color</span>: blue;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*这是 &amp;.content*/</span></div><div class="line"><span class="selector-tag">body</span> <span class="selector-tag">span</span><span class="selector-class">.content</span> &#123;</div><div class="line">    <span class="attribute">color</span>: green;</div><div class="line">&#125;</div><div class="line"><span class="comment">/*这是 .content*/</span></div><div class="line"><span class="selector-tag">body</span> <span class="selector-tag">span</span> <span class="selector-class">.content2</span> &#123;</div><div class="line">    <span class="attribute">color</span>: red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>@at-root</strong> :意思是跳出根部嵌套选择器<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span>&#123;</div><div class="line">	@at-root .container&#123;</div><div class="line">    <span class="selector-tag">width</span><span class="selector-pseudo">:995px</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">//编译之后</div><div class="line"></div><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">   <span class="attribute">width</span>: <span class="number">995px</span>;</div><div class="line">&#125;</div><div class="line">//就不会包含在body里面了</div></pre></td></tr></table></figure></p>
+<p><strong>注意 如果是在@medio里面</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">	@media screen and (max-width:600px)&#123;</div><div class="line">    <span class="selector-class">.content4</span> &#123;</div><div class="line">      <span class="attribute">color</span>:<span class="number">#000</span>;</div><div class="line">    &#125;</div><div class="line">    //跳出了media 但是没跳出body</div><div class="line">    @<span class="keyword">at</span>-<span class="keyword">root</span> (without : media)&#123;</div><div class="line">      <span class="selector-class">.content3</span>&#123;</div><div class="line">        <span class="attribute">color</span>:<span class="number">#ccc</span>; </div><div class="line">    &#125;</div><div class="line">    &#125;</div><div class="line">    //跳出了body</div><div class="line">    @<span class="keyword">at</span>-<span class="keyword">root</span> (without : media rule)&#123;</div><div class="line">      <span class="selector-class">.content5</span>&#123;</div><div class="line">        <span class="attribute">color</span>:<span class="number">#ccc</span>; </div><div class="line">    &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>编译之后&gt;&gt;&gt;<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span> screen and (max-width: <span class="number">600px</span>) &#123;</div><div class="line">   <span class="selector-tag">body</span> <span class="selector-class">.content4</span> &#123;</div><div class="line">	      <span class="attribute">color</span>: <span class="number">#000</span>;</div><div class="line">      &#125;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">body</span> <span class="selector-class">.content3</span> &#123;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#ccc</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.content5</span> &#123;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#ccc</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>需要注意</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.foo</span> &#123;</div><div class="line">    @at-root .bar &#123;</div><div class="line">        <span class="selector-tag">color</span>: <span class="selector-tag">gray</span>;</div><div class="line"></div><div class="line">        @<span class="keyword">at</span>-<span class="keyword">root</span> button&#123;</div><div class="line">            <span class="selector-tag">color</span><span class="selector-pseudo">:red</span>;</div><div class="line"></div><div class="line">            @<span class="keyword">at</span>-<span class="keyword">root</span> span &#123;</div><div class="line">                <span class="selector-tag">color</span>: <span class="selector-tag">orange</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//编译之后</div><div class="line"></div><div class="line"><span class="selector-class">.bar</span> &#123;</div><div class="line">  <span class="attribute">color</span>: gray; </div><div class="line">&#125;</div><div class="line"><span class="selector-tag">button</span> &#123;</div><div class="line">  <span class="attribute">color</span>: red; </div><div class="line">&#125;</div><div class="line"><span class="selector-tag">span</span> &#123;</div><div class="line">  <span class="attribute">color</span>: orange; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>默认@at-root只会跳出选择器嵌套，而不能跳出@media或@support,如果要跳出这两种,则需使用@at-root（without: media）,@at-root(without :support)。这个语法的关键字有四个: all(表示所有)，rule(表示常规css)，media，support。默认的@at-root其实就是@at-root(without : rule)</p>
+</blockquote>
+<p><strong>@at-root 与 &amp;</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">at</span>-<span class="keyword">root</span> .text-info&#123;</div><div class="line">    <span class="selector-tag">color</span><span class="selector-pseudo">:red</span>;</div><div class="line">    @<span class="keyword">at</span>-<span class="keyword">root</span> nav &amp;&#123;</div><div class="line">      <span class="selector-tag">color</span><span class="selector-pseudo">:blue</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  //编译后</div><div class="line"><span class="selector-class">.text-info</span> &#123;</div><div class="line">    <span class="attribute">color</span>: red;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">nav</span> <span class="selector-class">.text-info</span> &#123;</div><div class="line">    <span class="attribute">color</span>: blue;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>啦啦啦，有没有土豪看到！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="洪涛 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="洪涛 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Sass/" rel="tag"># Sass</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/30/ECMAscript6/ECMAscript6快速入门-iterator/" rel="next" title="ECMAscript6快速入门-iterator">
+                <i class="fa fa-chevron-left"></i> ECMAscript6快速入门-iterator
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/30/Sass入门/Sass基础-入门/" rel="prev" title="Sass基础--入门">
+                Sass基础--入门 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="洪涛" />
+            
+              <p class="site-author-name" itemprop="name">洪涛</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://macshuo.com/" title="MacTalk" target="_blank">MacTalk</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.hongtao.site/" title="另一个博客" target="_blank">另一个博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://airfald.github.io/" title="欧贺福的博客" target="_blank">欧贺福的博客</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">洪涛</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
